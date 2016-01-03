@@ -32,10 +32,17 @@ class Woordy(object):
         base_url = Woordy.__get_api_url("glosbe")
         url = base_url.format(word=phrase, source_lang=source_lang, dest_lang=dest_lang)
         req = requests.get(url).json()
-        word = req['tuc'][0]['phrase']['text']
+        try:
+            word = req['tuc'][0]['phrase']['text']
+
+        except IndexError:
+            return "Word not found. Try checking for some typo issues."
+
         try:
             meaning = req['tuc'][0]['meanings'][0]['text']
-        except KeyError:
+
+        except (KeyError, IndexError):
             meaning = 'Meaning not found.'
-        dicty = [word, {'meaning': meaning}]
+
+        dicty = {word: meaning}
         return dicty
