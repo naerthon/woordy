@@ -19,3 +19,7 @@ See http://en.wikipedia.org/wiki/List_of_ISO_639-3_codes for full list.
 >>> Woordy.translate('book', 'en', 'de')
 ['Buch', {'meaning': 'collection of sheets of paper bound together containing printed or written material'}]
 ```
+
+## Demonstration
+
+![Image](../master/img/demo.gif?raw=true)
